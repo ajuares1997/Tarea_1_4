@@ -1,24 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+    
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:Convertidor="clr-namespace:Tarea_1_4.Converters"
              x:Class="Tarea_1_4.MainPage">
 
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Convertidor:ByteArrayToImage x:Key="ByteToImage" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
+        <ScrollView>
+            
+
+
+            <StackLayout Orientation="Vertical" >
+                <Frame BackgroundColor="Black" Padding="0" CornerRadius="0">
+                    <Label Text="Tarea_1_4" HorizontalTextAlignment="Center" TextColor="White" FontSize="18"/>
+                </Frame>
+                <Image x:Name="img"  HeightRequest="300" WidthRequest="100" BackgroundColor="Gray" Margin="20,0,20,0" Source="{Binding imagen, Converter={StaticResource ByteToImage}}"/>
+                <Label Text="Nombre" FontAttributes="Bold" FontSize="20" Padding="30,10,30,0"/>
+                <Entry x:Name="txtnombre" Placeholder="ingreso su nombre" Margin="30,0,30,0" FontSize="Subtitle" Text="{Binding nombres}"/>
+                <Label Text="Descripcion" FontAttributes="Bold" FontSize="20" Padding="30,10,30,0"/>
+                <Entry x:Name="txtdescripcion" Placeholder="ingrese una descripcion " Margin="30,0,30,0" FontSize="Subtitle" Text="{Binding descripcion}"/>
+
+                <Button Text="Tomar Foto" x:Name="btnFoto" Clicked="btnFoto_Clicked" TextColor="White" BackgroundColor="Black" CornerRadius="10" Margin="0,30,30,0" WidthRequest="150" HorizontalOptions="Center"/>
+                <Button Text="a SQlite" x:Name="btnSQlite" Clicked="btnSQlite_Clicked" TextColor="White" BackgroundColor="Black" CornerRadius="10" Margin="0,30,30,0" WidthRequest="150" HorizontalOptions="Center" />
+            </StackLayout>
+
+ 
+        </ScrollView>
+
+
     </StackLayout>
 
 </ContentPage>
